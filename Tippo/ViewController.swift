@@ -15,9 +15,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipSegment: UISegmentedControl!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    func updateSegments() {
+        // TODO get the segments updating with these values and falling back to .18, .2, .22
+        let values: AnyObject? = defaults.valueForKey("tipValues")
+        print(values)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        updateSegments()
     }
 
     override func didReceiveMemoryWarning() {

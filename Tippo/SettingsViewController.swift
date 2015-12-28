@@ -17,21 +17,26 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var midRangeLabel: UILabel!
     @IBOutlet weak var highEndLabel: UILabel!
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    
     @IBAction func onEditingChanged(sender: AnyObject) {
         
         let lowEnd = Int(lowEndSlider.value * 100)
         let midRange = Int(midRangeSlider.value * 100)
         let highEnd = Int(highEndSlider.value * 100)
+        let values = [lowEnd, midRange, highEnd]
         
         lowEndLabel.text = "\(lowEnd)%"
         midRangeLabel.text = "\(midRange)%"
         highEndLabel.text = "\(highEnd)%"
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(values, forKey: "tipValues")
+        defaults.synchronize()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
