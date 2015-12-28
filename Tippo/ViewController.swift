@@ -18,9 +18,13 @@ class ViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     func updateSegments() {
-        // TODO get the segments updating with these values and falling back to .18, .2, .22
-        let values: AnyObject? = defaults.valueForKey("tipValues")
-        print(values)
+        // TODO get the segments falling back to .18, .2, .22 if returns nil
+        let values = defaults.objectForKey("tipValues") as! [Int]
+        var idx = 0
+        for (value) in values {
+            tipSegment.setTitle("\(value)%", forSegmentAtIndex: idx)
+            idx = ++idx
+        }
     }
     
     override func viewDidLoad() {

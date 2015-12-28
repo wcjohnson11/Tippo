@@ -23,11 +23,19 @@ class SettingsViewController: UIViewController {
         let lowEnd = Int(lowEndSlider.value * 100)
         let midRange = Int(midRangeSlider.value * 100)
         let highEnd = Int(highEndSlider.value * 100)
-        let values = [lowEnd, midRange, highEnd]
+        let values: [Int] = [lowEnd, midRange, highEnd]
         
+        
+//        lowEndSlider.maximumValue = midRangeSlider.value
+//        midRangeSlider.minimumValue = lowEndSlider.value
+//        midRangeSlider.maximumValue = highEndSlider.value
+//        highEndSlider.minimumValue = midRangeSlider.value
+        
+        // Set Label Values
         lowEndLabel.text = "\(lowEnd)%"
         midRangeLabel.text = "\(midRange)%"
         highEndLabel.text = "\(highEnd)%"
+        
         
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(values, forKey: "tipValues")
