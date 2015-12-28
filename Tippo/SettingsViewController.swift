@@ -9,11 +9,29 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet weak var lowEndSlider: UISlider!
+    @IBOutlet weak var midRangeSlider: UISlider!
+    @IBOutlet weak var highEndSlider: UISlider!
+    @IBOutlet weak var lowEndLabel: UILabel!
+    @IBOutlet weak var midRangeLabel: UILabel!
+    @IBOutlet weak var highEndLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func onEditingChanged(sender: AnyObject) {
+        
+        let lowEnd = Int(lowEndSlider.value * 100)
+        let midRange = Int(midRangeSlider.value * 100)
+        let highEnd = Int(highEndSlider.value * 100)
+        
+        lowEndLabel.text = "\(lowEnd)%"
+        midRangeLabel.text = "\(midRange)%"
+        highEndLabel.text = "\(highEnd)%"
     }
 
     override func didReceiveMemoryWarning() {

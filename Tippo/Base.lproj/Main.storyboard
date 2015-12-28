@@ -132,7 +132,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GK4-aQ-P4Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Tippo" id="jg0-x7-Ed6">
+                                    <navigationItem title="Settings" id="jg0-x7-Ed6">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="Cwr-pF-3aG">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lm6-M9-Eg5">
                                                 <rect key="frame" x="-23" y="-15" width="71" height="30"/>
@@ -155,15 +155,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="isU-tu-KFb">
-                                <rect key="frame" x="133" y="139" width="212" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6aa-US-KJP">
-                                <rect key="frame" x="133" y="202" width="212" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yLR-A9-erh">
-                                <rect key="frame" x="133" y="271" width="212" height="31"/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Low End" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pc-iN-sxD">
                                 <rect key="frame" x="33" y="145" width="60" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -200,6 +191,27 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1eu-t5-BXl">
+                                <rect key="frame" x="133" y="202" width="212" height="31"/>
+                                <color key="tintColor" red="0.51694362279999995" green="1" blue="0.83927488459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onEditingChanged:" destination="CBC-EQ-hMa" eventType="valueChanged" id="jR1-HI-vLK"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6jO-PD-QvG">
+                                <rect key="frame" x="128" y="271" width="212" height="31"/>
+                                <color key="tintColor" red="0.51694362279999995" green="1" blue="0.83927488459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onEditingChanged:" destination="CBC-EQ-hMa" eventType="valueChanged" id="DcS-t4-IPR"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="isU-tu-KFb">
+                                <rect key="frame" x="133" y="139" width="212" height="31"/>
+                                <color key="tintColor" red="0.51694362276100603" green="1" blue="0.83927488462555677" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onEditingChanged:" destination="CBC-EQ-hMa" eventType="valueChanged" id="lja-72-0Lg"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.808814327" green="0.93552714650000002" blue="0.7136481187" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
@@ -207,6 +219,14 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="highEndLabel" destination="jlf-Dv-3nF" id="wuY-Nf-6K3"/>
+                        <outlet property="highEndSlider" destination="6jO-PD-QvG" id="TM7-CB-LdQ"/>
+                        <outlet property="lowEndLabel" destination="fPw-NO-aRp" id="eVH-WY-JxI"/>
+                        <outlet property="lowEndSlider" destination="isU-tu-KFb" id="8ZW-CQ-qCs"/>
+                        <outlet property="midRangeLabel" destination="Qce-wb-0CN" id="vJL-tU-WSt"/>
+                        <outlet property="midRangeSlider" destination="1eu-t5-BXl" id="7iB-6h-e8p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pde-iG-puN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
