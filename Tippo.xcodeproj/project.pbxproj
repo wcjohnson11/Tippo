@@ -13,6 +13,8 @@
 		5C2F67FC1C30D15300FBF664 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F67FB1C30D15300FBF664 /* Images.xcassets */; };
 		5C2F67FF1C30D15300FBF664 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F67FD1C30D15300FBF664 /* LaunchScreen.xib */; };
 		5C2F680B1C30D15300FBF664 /* TippoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F680A1C30D15300FBF664 /* TippoTests.swift */; };
+		5C5861E71C30DD1000F43BBE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */; };
+		5C5861E91C30E26300F43BBE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5C5861E81C30E26300F43BBE /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		5C2F68041C30D15300FBF664 /* TippoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TippoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C2F68091C30D15300FBF664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C2F680A1C30D15300FBF664 /* TippoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippoTests.swift; sourceTree = "<group>"; };
+		5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5C5861E81C30E26300F43BBE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +81,10 @@
 		5C2F67F11C30D15300FBF664 /* Tippo */ = {
 			isa = PBXGroup;
 			children = (
+				5C2F68141C30D65400FBF664 /* View Controllers */,
 				5C2F67F41C30D15300FBF664 /* AppDelegate.swift */,
-				5C2F67F61C30D15300FBF664 /* ViewController.swift */,
 				5C2F67F81C30D15300FBF664 /* Main.storyboard */,
+				5C5861E81C30E26300F43BBE /* README.md */,
 				5C2F67FB1C30D15300FBF664 /* Images.xcassets */,
 				5C2F67FD1C30D15300FBF664 /* LaunchScreen.xib */,
 				5C2F67F21C30D15300FBF664 /* Supporting Files */,
@@ -110,6 +115,15 @@
 				5C2F68091C30D15300FBF664 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C2F68141C30D65400FBF664 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F67F61C30D15300FBF664 /* ViewController.swift */,
+				5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +228,8 @@
 			files = (
 				5C2F67F71C30D15300FBF664 /* ViewController.swift in Sources */,
 				5C2F67F51C30D15300FBF664 /* AppDelegate.swift in Sources */,
+				5C5861E91C30E26300F43BBE /* README.md in Sources */,
+				5C5861E71C30DD1000F43BBE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Tippo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Tippo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -409,6 +427,7 @@
 				5C2F68101C30D15300FBF664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C2F68111C30D15300FBF664 /* Build configuration list for PBXNativeTarget "TippoTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +436,7 @@
 				5C2F68131C30D15300FBF664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
