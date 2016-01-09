@@ -16,9 +16,20 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lowEndLabel: UILabel!
     @IBOutlet weak var midRangeLabel: UILabel!
     @IBOutlet weak var highEndLabel: UILabel!
+    @IBOutlet weak var lowEndButton: UIButton!
+    @IBOutlet weak var midRangeButton: UIButton!
+    @IBOutlet weak var highEndButton: UIButton!
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    
+
+    @IBAction func onButtonClick(sender: AnyObject) {
+        let priorIndex = getDefaultSegment()
+        let newIndex = sender.tag
+        
+        setDefaultSegment(newIndex)
+        updateUnderline(priorIndex)
+    }
+
     @IBAction func onEditingChanged(sender: AnyObject) {
         let lowEnd = Int(lowEndSlider.value * 100)
         let midRange = Int(midRangeSlider.value * 100)
@@ -34,6 +45,33 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
     }
     
+    func setDefaultSegment(index: Int){
+        defaults.setInteger(index, forKey: "defaultSegment")
+    }
+    
+    func getDefaultSegment() -> Int {
+        let segment = defaults.integerForKey("defaultSegment")
+        return segment
+    }
+    
+    func updateUnderline(priorIndex:Int?=nil) {
+        let buttons = [lowEndButton,midRangeButton,highEndButton]
+        
+        if let priorIndex = priorIndex {
+            let oldButtonText = NSMutableAttributedString(string: (buttons[priorIndex].titleLabel?.text)!)
+            oldButtonText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleNone.rawValue, range: NSMakeRange(0, buttons[priorIndex].titleLabel!.text!.utf16.count))
+            buttons[priorIndex].setAttributedTitle(oldButtonText, forState: .Normal)
+        }
+        
+        let index = getDefaultSegment()
+        let buttonText = NSMutableAttributedString(string: (buttons[index].titleLabel?.text)!)
+        buttonText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleDouble.rawValue, range: NSMakeRange(0, buttons[index].titleLabel!.text!.utf16.count))
+        buttons[index].setAttributedTitle(buttonText, forState: .Normal)
+        
+
+        
+    }
+
     func updateSegments() {
         let values = getSegmentValues()
         for i in 0...2 {
@@ -63,6 +101,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         updateSegments()
+        updateUnderline()
     }
 
     override func didReceiveMemoryWarning() {

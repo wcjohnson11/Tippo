@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     
     func updateSegments() {
-        // TODO get the segments falling back to .18, .2, .22 if returns nil
+        let defaultSegment = getDefaultSegment()
+        tipSegment.selectedSegmentIndex = defaultSegment
         let values = getSegmentValues()
         for i in 0...2 {
             setSegmentValue(values[i], index: i)
@@ -28,8 +29,8 @@ class ViewController: UIViewController {
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         
-        let tipPercentages = [0.18, 0.2, 0.22]
-        let tipPercentage = tipPercentages[tipSegment.selectedSegmentIndex]
+        let tipPercentages = getSegmentValues()
+        let tipPercentage = Double(tipPercentages[tipSegment.selectedSegmentIndex])/100
         let amount = NSString(string: billField.text!).doubleValue
         let tip = amount * tipPercentage
         let total = amount + tip
@@ -43,6 +44,11 @@ class ViewController: UIViewController {
     
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
+    }
+    
+    func getDefaultSegment() -> Int {
+      let index = defaults.integerForKey("defaultSegment")
+        return index
     }
     
     func getSegmentValues() -> [Int] {
