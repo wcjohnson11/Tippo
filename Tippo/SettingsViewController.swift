@@ -17,34 +17,52 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var midRangeLabel: UILabel!
     @IBOutlet weak var highEndLabel: UILabel!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     @IBAction func onEditingChanged(sender: AnyObject) {
-        
         let lowEnd = Int(lowEndSlider.value * 100)
         let midRange = Int(midRangeSlider.value * 100)
         let highEnd = Int(highEndSlider.value * 100)
         let values: [Int] = [lowEnd, midRange, highEnd]
-        
-        
-//        lowEndSlider.maximumValue = midRangeSlider.value
-//        midRangeSlider.minimumValue = lowEndSlider.value
-//        midRangeSlider.maximumValue = highEndSlider.value
-//        highEndSlider.minimumValue = midRangeSlider.value
         
         // Set Label Values
         lowEndLabel.text = "\(lowEnd)%"
         midRangeLabel.text = "\(midRange)%"
         highEndLabel.text = "\(highEnd)%"
         
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(values, forKey: "tipValues")
         defaults.synchronize()
+    }
+    
+    func updateSegments() {
+        let values = getSegmentValues()
+        for i in 0...2 {
+            setSegmentValue(values[i], index: i)
+        }
+    }
+    
+    func getSegmentValues() -> [Int] {
+        let values = defaults.objectForKey("tipValues") as! [Int]
+        return values
+    }
+    
+    func setSegmentValue(value: Int, index: Int) {
+        let sliders = [lowEndSlider, midRangeSlider, highEndSlider]
+        var labels = [lowEndLabel, midRangeLabel, highEndLabel]
+        labels[index].text = "\(value)%"
+        //Type coercion for slider value
+        var sliderValue = Float(value)
+        sliderValue = sliderValue / 100
+        sliders[index].value = sliderValue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        updateSegments()
     }
 
     override func didReceiveMemoryWarning() {
