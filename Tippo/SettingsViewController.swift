@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lowEndButton: UIButton!
     @IBOutlet weak var midRangeButton: UIButton!
     @IBOutlet weak var highEndButton: UIButton!
+    @IBOutlet weak var themeSegmenter: UISegmentedControl!
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -40,13 +41,33 @@ class SettingsViewController: UIViewController {
         lowEndLabel.text = "\(lowEnd)%"
         midRangeLabel.text = "\(midRange)%"
         highEndLabel.text = "\(highEnd)%"
-        
+        // Store tipValues
         defaults.setObject(values, forKey: "tipValues")
         defaults.synchronize()
     }
     
     func setDefaultSegment(index: Int){
         defaults.setInteger(index, forKey: "defaultSegment")
+    }
+    
+    @IBAction func onThemeChanged(sender: UISegmentedControl) {
+        let index = themeSegmenter.selectedSegmentIndex
+        defaults.setInteger(index, forKey: "themeIndex")
+    }
+    
+    func updateStyles() {
+        let index = defaults.integerForKey("themeIndex")
+        print(index)
+        if (index == 1) {
+            Style.themeDark()
+        } else {
+            Style.themeLight()
+        }
+    }
+    
+    func updateTheme() {
+        let index = defaults.integerForKey("themeIndex")
+        themeSegmenter.selectedSegmentIndex = index
     }
     
     func getDefaultSegment() -> Int {
@@ -56,20 +77,17 @@ class SettingsViewController: UIViewController {
     
     func updateUnderline(priorIndex:Int?=nil) {
         let buttons = [lowEndButton,midRangeButton,highEndButton]
-        
+        // Remove a prior underline if priorIndex is passed
         if let priorIndex = priorIndex {
             let oldButtonText = NSMutableAttributedString(string: (buttons[priorIndex].titleLabel?.text)!)
             oldButtonText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleNone.rawValue, range: NSMakeRange(0, buttons[priorIndex].titleLabel!.text!.utf16.count))
             buttons[priorIndex].setAttributedTitle(oldButtonText, forState: .Normal)
         }
-        
+        // Underline the default segment
         let index = getDefaultSegment()
         let buttonText = NSMutableAttributedString(string: (buttons[index].titleLabel?.text)!)
         buttonText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleDouble.rawValue, range: NSMakeRange(0, buttons[index].titleLabel!.text!.utf16.count))
         buttons[index].setAttributedTitle(buttonText, forState: .Normal)
-        
-
-        
     }
 
     func updateSegments() {
@@ -97,11 +115,14 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = Style.viewBackgroundColor
     }
     
     override func viewWillAppear(animated: Bool) {
         updateSegments()
         updateUnderline()
+        updateTheme()
+        updateStyles()
     }
 
     override func didReceiveMemoryWarning() {

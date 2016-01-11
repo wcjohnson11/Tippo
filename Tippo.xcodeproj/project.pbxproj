@@ -15,6 +15,7 @@
 		5C2F680B1C30D15300FBF664 /* TippoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F680A1C30D15300FBF664 /* TippoTests.swift */; };
 		5C5861E71C30DD1000F43BBE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */; };
 		5CD7B0B91C4171BF0012EF8B /* tippo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD7B0B81C4171BF0012EF8B /* tippo.png */; };
+		5CD7B0BB1C41FB8E0012EF8B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD7B0BA1C41FB8E0012EF8B /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		5C2F680A1C30D15300FBF664 /* TippoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TippoTests.swift; sourceTree = "<group>"; };
 		5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5CD7B0B81C4171BF0012EF8B /* tippo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tippo.png; path = ../../../../../../../Documents/tippo.png; sourceTree = "<group>"; };
+		5CD7B0BA1C41FB8E0012EF8B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				5C2F67F61C30D15300FBF664 /* ViewController.swift */,
 				5C5861E61C30DD1000F43BBE /* SettingsViewController.swift */,
+				5CD7B0BA1C41FB8E0012EF8B /* Style.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				5C2F67F71C30D15300FBF664 /* ViewController.swift in Sources */,
 				5C2F67F51C30D15300FBF664 /* AppDelegate.swift in Sources */,
 				5C5861E71C30DD1000F43BBE /* SettingsViewController.swift in Sources */,
+				5CD7B0BB1C41FB8E0012EF8B /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
