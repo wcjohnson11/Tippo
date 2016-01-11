@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var threeFriendsLabel: UILabel!
     @IBOutlet weak var fourFriendsLabel: UILabel!
     @IBOutlet weak var fiveFriendsLabel: UILabel!
+    @IBOutlet weak var friendsContainer: UIView!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -137,6 +138,7 @@ class ViewController: UIViewController {
         totalLabel.textColor = Style.totalTextColor
         tipSegment.tintColor = Style.totalTextColor
         friendsView.backgroundColor = Style.viewBackgroundColor
+        friendsContainer.backgroundColor = Style.viewBackgroundColor
         self.view.backgroundColor = Style.viewBackgroundColor
     }
     
@@ -162,7 +164,7 @@ class ViewController: UIViewController {
             self.billField.frame = CGRectMake(24, 127, 327, 97)
             self.tippoQuote.frame = CGRectMake(95, 78, 260, 50)
             self.tippoMascot.frame = CGRectMake(40, 92, 38, 36)
-            self.friendsView.alpha = 1
+            self.friendsView.hidden = false
             self.totalLabel.alpha = 1
             self.tipLabel.alpha = 1
             self.tipSegment.alpha = 1
@@ -176,7 +178,7 @@ class ViewController: UIViewController {
             self.tippoMascot.frame = CGRectMake(40, 92, 38, 136)
             self.totalLabel.alpha = 0
             self.tipLabel.alpha = 0
-            self.friendsView.alpha = 0
+            self.friendsView.hidden = true
             self.tipSegment.alpha = 0
         })
     }
