@@ -39,8 +39,8 @@ class ViewController: UIViewController {
         // Logic to show more
         let amount = NSString(string: billField.text!).floatValue
         storeBillAmount(amount)
-        
-        if (amount == 0) {
+        print(amount)
+        if (amount <= 0) {
             tippoQuote.text = "Don't be shy, I'm here to help!"
             animateFieldsOut()
         }
