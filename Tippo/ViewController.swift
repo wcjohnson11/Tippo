@@ -7,10 +7,12 @@
 //
 
 import UIKit
-
+import AnalyticsSwift
 
 class ViewController: UIViewController {
-
+    
+    var analytics: Analytics!
+    
     @IBOutlet weak var tippoQuote: UILabel!
     @IBOutlet weak var tippoMascot: UIImageView!
     @IBOutlet weak var billField: UITextField!
@@ -40,6 +42,9 @@ class ViewController: UIViewController {
         let amount = NSString(string: billField.text!).floatValue
         storeBillAmount(amount)
         print(amount)
+        let message = TrackMessageBuilder(event: "Button A").userId("prateek")
+        analytics.enqueue(message)
+        analytics.flush()
         if (amount <= 0) {
             tippoQuote.text = "Don't be shy, I'm here to help!"
             animateFieldsOut()
@@ -97,7 +102,7 @@ class ViewController: UIViewController {
     }
     
     func getSegmentValues() -> [Int] {
-        let values = defaults.objectForKey("tipValues") as! [Int]
+        let values = defaults.objectForKey("tipValues") as? [Int] ?? [10,15,20]
         return values
     }
     
@@ -194,6 +199,7 @@ class ViewController: UIViewController {
         updateSegments()
         handleDisplayLogic()
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        analytics = Analytics.create("3GN7Xqg1LLpwMdAPH5M2MsxbTHEo80Nc")
         
         notificationCenter.addObserver(self,
             selector: Selector("appBecameActive"),

@@ -1,0 +1,10 @@
+PODS:
+  - AnalyticsSwift (0.2.0)
+
+DEPENDENCIES:
+  - AnalyticsSwift (~> 0.2.0)
+
+SPEC CHECKSUMS:
+  AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
+
+COCOAPODS: 0.39.0
